@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <!-- Manifest added by SuperPWA - Progressive Web Apps Plugin For WordPress -->
-    <link rel="manifest" href="superpwa-manifest.json">
-    <link rel="prefetch" href="superpwa-manifest.json">
+    <link rel="manifest" href="{% static 'json/superpwa-manifest.json' %}">
+    <link rel="prefetch" href="{% static 'json/superpwa-manifest.json' %}">
     <meta name="theme-color" content="#1d9da0">
     <!-- / SuperPWA.com -->
     <title>Zamin Education</title>
@@ -79,34 +79,18 @@
             padding: 0 !important;
         }
     </style>
-    <link rel='stylesheet' id='wp-block-library-css'
-          href='wp-includes/css/dist/block-library/style.min9f31.css?ver=5.7.2' type='text/css' media='all'/>
-    <link rel='stylesheet' id='tutor-icon-css'
-          href='wp-content/plugins/tutor/assets/icons/css/tutor-icon2e49.css?ver=1.8.7' type='text/css' media='all'/>
-    <link rel='stylesheet' id='tutor-plyr-css'
-          href='wp-content/plugins/tutor/assets/packages/plyr/plyr2e49.css?ver=1.8.7' type='text/css' media='all'/>
-    <link rel='stylesheet' id='tutor-frontend-css'
-          href='wp-content/plugins/tutor/assets/css/tutor-front.min2e49.css?ver=1.8.7' type='text/css' media='all'/>
-    <style id='tutor-frontend-inline-css' type='text/css'>
-        :root {
-            --tutor-primary-color: #1d9da0;
-            --tutor-primary-hover-color: #1d9da0;
-            --tutor-text-color: #333333;
-        }
-    </style>
+
     {% include 'imports.html' %}
-    <script type='text/javascript' src='wp-includes/js/jquery/jquery.min9d52.js?ver=3.5.1' id='jquery-core-js'></script>
-    <script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.mind617.js?ver=3.3.2'
+    <script type='text/javascript' src='{% static 'js/jquery.min9d52.js' %}' id='jquery-core-js'></script>
+    <script type='text/javascript' src='{% static 'js/jquery-migrate.mind617.js' %}'
             id='jquery-migrate-js'></script>
     <script type='text/javascript'
-            src='wp-content/plugins/tutor-pro/addons/tutor-certificate/assets/js/instructor-signature9f31.js?ver=5.7.2'
+            src='{% static 'js/instructor-signature9f31.js' %}'
             id='tutor-instructor-signature-js-js'></script>
     <link rel="https://api.w.org/" href="wp-json/index.html"/>
     <link rel="alternate" type="application/json" href="wp-json/wp/v2/pages/70.json"/>
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd"/>
     <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml"/>
-    <meta name="generator" content="WordPress 5.7.2"/>
-    <meta name="generator" content="TutorLMS 1.8.7"/>
     <link rel="canonical" href="index.html"/>
     <link rel='shortlink' href='index.html'/>
     <link rel="alternate" type="application/json+oembed"
@@ -954,7 +938,7 @@
     var superpwa_sw = {"url": "\/superpwa-sw.js", "disable_addtohome": "0", "enableOnDesktop": ""};
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/super-progressive-web-apps/public/js/register-sw.js'
+<script type='text/javascript' src='{% static 'js/register-sw.js' %}'
         id='superpwa-register-sw-js'></script>
 <script type='text/javascript' id='quicktags-js-extra'>
     /* <![CDATA[ */
@@ -991,19 +975,18 @@
     };
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-includes/js/quicktags.min9f31.js?ver=5.7.2' id='quicktags-js'></script>
-<script type='text/javascript' src='wp-includes/js/jquery/ui/core.min35d0.js?ver=1.12.1'
+<script type='text/javascript' src='{% static 'js/quicktags.min9f31.js' %}' id='quicktags-js'></script>
+<script type='text/javascript' src='{% static 'js/core.min35d0.js' %}'
         id='jquery-ui-core-js'></script>
-<script type='text/javascript' src='wp-includes/js/jquery/ui/mouse.min35d0.js?ver=1.12.1'
+<script type='text/javascript' src='{% static 'js/mouse.min35d0.js' %}'
         id='jquery-ui-mouse-js'></script>
-<script type='text/javascript' src='wp-includes/js/jquery/ui/sortable.min35d0.js?ver=1.12.1'
+<script type='text/javascript' src='{% static 'js/sortable.min35d0.js' %}'
         id='jquery-ui-sortable-js'></script>
-<script type='text/javascript' src='wp-content/plugins/tutor/assets/packages/plyr/plyr.polyfilled.min2e49.js?ver=1.8.7'
+<script type='text/javascript' src='{% static 'js/plyr.polyfilled.min2e49.js' %}'
         id='tutor-plyr-js'></script>
-<script type='text/javascript'
-        src='wp-content/plugins/tutor/assets/packages/SocialShare/SocialShare.min2e49.js?ver=1.8.7'
+<script type='text/javascript' src='{% static 'js/SocialShare.min2e49.js' %}'
         id='tutor-social-share-js'></script>
-<script type='text/javascript' src='wp-content/plugins/tutor/assets/js/tutor2e49.js?ver=1.8.7'
+<script type='text/javascript' src='{% static 'js/tutor2e49.js' %}'
         id='tutor-main-js'></script>
 <script type='text/javascript' id='tutor-frontend-js-extra'>
     /* <![CDATA[ */
@@ -1018,7 +1001,7 @@
     };
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/tutor/assets/js/tutor-front2e49.js?ver=1.8.7'
+<script type='text/javascript' src='{% static 'js/tutor-front2e49.js' %}'
         id='tutor-frontend-js'></script>
 <script type='text/javascript' id='pojo-a11y-js-extra'>
     /* <![CDATA[ */
@@ -1031,19 +1014,17 @@
     };
     /* ]]> */
 </script>
-<script type='text/javascript' src='wp-content/plugins/pojo-accessibility/assets/js/app.min8a54.js?ver=1.0.0'
+<script type='text/javascript' src='{% static 'js/app.min8a54.js' %}'
         id='pojo-a11y-js'></script>
-<script type='text/javascript' src='wp-includes/js/wp-embed.min9f31.js?ver=5.7.2' id='wp-embed-js'></script>
-<script type='text/javascript'
-        src='wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.minf269.js?ver=1.0.1'
+<script type='text/javascript' src='{% static 'js/wp-embed.min9f31.js' %}' id='wp-embed-js'></script>
+<script type='text/javascript' src='{% static 'js/jquery.smartmenus.minf269.js'%}'
         id='smartmenus-js'></script>
-<script type='text/javascript' src='wp-includes/js/imagesloaded.mineda1.js?ver=4.1.4' id='imagesloaded-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/js/webpack.runtime.minaeb9.js?ver=3.1.4'
+<script type='text/javascript' src='{% static 'js/imagesloaded.mineda1.js' %}' id='imagesloaded-js'></script>
+<script type='text/javascript' src='{% static 'js/webpack.runtime.minaeb9.js' %}'
         id='elementor-webpack-runtime-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/js/frontend-modules.minaeb9.js?ver=3.1.4'
+<script type='text/javascript' src='{% static 'js/frontend-modules.minaeb9.js' %}'
         id='elementor-frontend-modules-js'></script>
-<script type='text/javascript'
-        src='wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min8d18.js?ver=3.0.5'
+<script type='text/javascript' src='{% static 'js/jquery.sticky.min8d18.js' %}='
         id='elementor-sticky-js'></script>
 <script type='text/javascript' id='elementor-pro-frontend-js-before'>
     var ElementorProFrontendConfig = {
@@ -1078,15 +1059,15 @@
         "lottie": {"defaultAnimationUrl": "https:\/\/zamineducation.uz\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}
     };
 </script>
-<script type='text/javascript' src='wp-content/plugins/elementor-pro/assets/js/frontend.min8d18.js?ver=3.0.5'
+<script type='text/javascript' src='{% static 'js/frontend.min8d18.js' %}'
         id='elementor-pro-frontend-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/dialog/dialog.mina288.js?ver=4.8.1'
+<script type='text/javascript' src='{% static 'js/dialog.mina288.js' %}'
         id='elementor-dialog-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min05da.js?ver=4.0.2'
+<script type='text/javascript' src='{% static 'js/waypoints.min05da.js' %}'
         id='elementor-waypoints-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/share-link/share-link.minaeb9.js?ver=3.1.4'
+<script type='text/javascript' src='{% static 'js/share-link.minaeb9.js' %}'
         id='share-link-js'></script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/lib/swiper/swiper.min48f5.js?ver=5.3.6'
+<script type='text/javascript' src='{% static 'js/swiper.min48f5.js' %}'
         id='swiper-js'></script>
 <script type='text/javascript' id='elementor-frontend-js-before'>
     var elementorFrontendConfig = {
@@ -1129,10 +1110,9 @@
         "post": {"id": 70, "title": "Zamin%20Education", "excerpt": "", "featuredImage": false}
     };
 </script>
-<script type='text/javascript' src='wp-content/plugins/elementor/assets/js/frontend.minaeb9.js?ver=3.1.4'
+<script type='text/javascript' src='{% static 'js/frontend.minaeb9.js' %}'
         id='elementor-frontend-js'></script>
-<script type='text/javascript'
-        src='wp-content/plugins/elementor/assets/js/preloaded-elements-handlers.minaeb9.js?ver=3.1.4'
+<script type='text/javascript' src='{% static 'js/preloaded-elements-handlers.minaeb9.js' %}'
         id='preloaded-elements-handlers-js'></script>
 <a id="pojo-a11y-skip-content" class="pojo-skip-link pojo-skip-content" tabindex="1" accesskey="s" href="#content">Skip
     to content</a>
