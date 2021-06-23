@@ -2,8 +2,8 @@
 
 @font-face {
 	font-family: "tutor";
-	src: url("../font/tutor2eff.ttf?l5eb5q") format("truetype"),
-		url("../font/tutor2eff.woff?l5eb5q") format("woff"),
+	src: url("/static/fonts/tutor2eff.ttf") format("truetype"),
+		url("/static/fonts/tutor2eff.woff") format("woff"),
 		url("../font/tutor2eff.svg?l5eb5q#tutor") format("svg");
 	font-weight: normal;
 	font-style: normal;
