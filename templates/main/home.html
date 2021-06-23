@@ -29,7 +29,7 @@
                                              data-widget_type="button.default">
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-button-wrapper">
-                                                    <a href="courses/index.html"
+                                                    <a href="{% url 'courses' %}"
                                                        class="elementor-button-link elementor-button elementor-size-md"
                                                        role="button">
 						<span class="elementor-button-content-wrapper">
@@ -210,16 +210,15 @@
                                             <div class="elementor-widget-container">
                                                 <div class="elementor-swiper">
                                                     <div class="elementor-main-swiper swiper-container">
-                                                        {% for foo in '0123456789'|make_list %}
-                                                            <div class="swiper-wrapper">
+                                                        <div class="swiper-wrapper">
+                                                            {% for num in '123456789'|make_list %}
                                                                 <div class="swiper-slide">
                                                                     <div class="elementor-carousel-image"
-                                                                         style="background-image: url({% static 'images/room{{  }}.jpg' %})">
+                                                                         style="background-image: url(static/images/slider/slider{{ num }}.jpg)">
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        {% endfor %}
-
+                                                            {% endfor %}
+                                                        </div>
                                                         <div class="elementor-swiper-button elementor-swiper-button-prev">
                                                             <i class="eicon-chevron-left" aria-hidden="true"></i>
                                                             <span class="elementor-screen-only">Previous</span>
@@ -233,56 +232,14 @@
                                                 <div class="elementor-swiper">
                                                     <div class="elementor-thumbnails-swiper swiper-container">
                                                         <div class="swiper-wrapper">
-                                                            <div class="swiper-slide">
+                                                            {% for num in '123456789'|make_list %}
+                                                                <div class="swiper-slide">
                                                                 <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2021/03/2002v2.jpg)">
+                                                                     style="background-image: url(static/images/slider/slider{{ num }}.jpg)">
                                                                 </div>
                                                             </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2021/03/2004.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2020/11/photo_2020-11-05_15-59-21.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2020/11/photo_2020-11-05_15-59-22.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2021/03/zaminv2.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2020/11/photo_2020-11-05_15-59-25.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2020/11/photo_2020-11-05_15-59-26.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2021/03/1-8.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2021/03/4-5.jpg)">
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="elementor-fit-aspect-ratio elementor-carousel-image"
-                                                                     style="background-image: url(wp-content/uploads/2020/11/photo_2020-11-05_15-59-36.jpg)">
-                                                                </div>
-                                                            </div>
+                                                            {% endfor %}
+
                                                         </div>
                                                     </div>
                                                 </div>

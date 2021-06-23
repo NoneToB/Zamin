@@ -256,14 +256,41 @@
                                         <nav role="navigation"
                                              class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-double-line e--animation-drop-in">
                                             <ul id="menu-1-3c75f5a5" class="elementor-nav-menu">
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10">
-                                                    <a href="index.html" aria-current="page"
-                                                       class="elementor-item elementor-item-active">Bosh sahifa</a></li>
-                                                <li class="menu-item menu-item-type-post_type_archive menu-item-object-courses menu-item-13">
-                                                    <a href="courses/index.html" class="elementor-item">Kurslar</a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11">
-                                                    <a href="dashboard/index.html" class="elementor-item">Boshqaruv
-                                                        paneli</a></li>
+                                                {% if active_page == 1 %}
+
+
+                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10">
+                                                        <a href="index.html" aria-current="page"
+                                                           class="elementor-item elementor-item-active">Bosh sahifa</a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10">
+                                                        <a href="index.html" aria-current="page"
+                                                           class="elementor-item">Bosh sahifa</a>
+                                                    </li>
+                                                {% endif %}
+
+                                                {% if active_page == 2 %}
+                                                    <li class="menu-item menu-item-type-post_type_archive menu-item-object-courses menu-item-13">
+                                                        <a href="{% url 'courses' %}"
+                                                           class="elementor-item elementor-item-active">Kurslar</a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="menu-item menu-item-type-post_type_archive menu-item-object-courses menu-item-13">
+                                                        <a href="{% url 'courses' %}" class="elementor-item">Kurslar</a>
+                                                    </li>
+                                                {% endif %}
+
+                                                {% if active_page == 3 %}
+                                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11">
+                                                        <a href="dashboard/index.html" class="elementor-item elementor-item-active">Boshqaruv
+                                                            paneli</a></li>
+                                                {% else %}
+                                                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11">
+                                                        <a href="dashboard/index.html" class="elementor-item">Boshqaruv
+                                                            paneli</a></li>
+                                                {% endif %}
+
                                             </ul>
                                         </nav>
                                         <div class="elementor-menu-toggle" role="button" tabindex="0"
@@ -274,9 +301,14 @@
                                         <nav class="elementor-nav-menu--dropdown elementor-nav-menu__container"
                                              role="navigation" aria-hidden="true">
                                             <ul id="menu-2-3c75f5a5" class="elementor-nav-menu">
-                                                <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10">
-                                                    <a href="index.html" aria-current="page"
-                                                       class="elementor-item elementor-item-active">Bosh sahifa</a></li>
+                                                {% if active_page == 1 %}
+
+                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10">
+                                                        <a href="index.html" aria-current="page"
+                                                           class="elementor-item elementor-item-active">Bosh sahifa</a>
+                                                    </li>
+                                                {% endif %}
+
                                                 <li class="menu-item menu-item-type-post_type_archive menu-item-object-courses menu-item-13">
                                                     <a href="courses/index.html" class="elementor-item">Kurslar</a></li>
                                                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11">
@@ -316,7 +348,7 @@
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
                                             <div class="elementor-image-carousel swiper-wrapper">
-{#                                                TODO: Repeat sliders#}
+                                                {#                                                TODO: Repeat sliders#}
                                                 <div class="swiper-slide">
                                                     <figure class="swiper-slide-inner"><img class="swiper-slide-image"
                                                                                             src=""
@@ -370,7 +402,7 @@
 
                                                 <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item ">
                                                     <a class="elementor-cta__button elementor-button elementor-size-md"
-                                                       href="courses/index.html">
+                                                       href="{% url 'courses' %}">
                                                         Kurslar </a>
                                                 </div>
                                             </div>
@@ -396,7 +428,7 @@
                                      data-id="51cc4638" data-element_type="widget" data-widget_type="image.default">
                                     <div class="elementor-widget-container">
                                         <div class="elementor-image">
-                                            <a href="index.html">
+                                            <a href="{% url 'home' %}">
                                                 <img width="232" height="72" src="{% static 'images/Logo.png' %}"
                                                      class="attachment-full size-full" alt="" loading="lazy"
                                                      srcset="{% static 'images/Logo.png' %} 232w, {% static 'images/cropped-favicon-mini.png' %}"
@@ -625,7 +657,7 @@
 <script type='text/javascript' src='{% static 'js/app.min8a54.js' %}'
         id='pojo-a11y-js'></script>
 <script type='text/javascript' src='{% static 'js/wp-embed.min9f31.js' %}' id='wp-embed-js'></script>
-<script type='text/javascript' src='{% static 'js/jquery.smartmenus.minf269.js'%}'
+<script type='text/javascript' src='{% static 'js/jquery.smartmenus.minf269.js' %}'
         id='smartmenus-js'></script>
 <script type='text/javascript' src='{% static 'js/imagesloaded.mineda1.js' %}' id='imagesloaded-js'></script>
 <script type='text/javascript' src='{% static 'js/webpack.runtime.minaeb9.js' %}'
