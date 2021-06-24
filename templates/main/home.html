@@ -1,141 +1,140 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-    <main>
-    <main>
-        <!-- home section -->
-        <section id="home" class="home">
-            <div class="colored-area">
-                <div class="container">
-                    <div class="home__content row">
-                        <div class="col-md-6 content__text">
-                            <h2 class="home__title">
-                                ZAMIN TA'LIM PLATFORMASIGA XUSH KELIBSIZ!
-                            </h2>
-                            <div class="main-btn">
-                                <a href="#">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    BOSHLASH
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 content__media">
-                            <a href="#">
-                                <div class="home__img">
-                                    <div class="area">
-                                        <i class="far fa-play-circle"></i>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main>
+  <main>
+    <!-- home section -->
+    <section id="home" class="home">
+      <div class="colored-area">
+        <div class="container">
+          <div class="home__content row">
+            <div class="col-md-6 content__text">
+              <h2 class="home__title">
+                ZAMIN TA'LIM PLATFORMASIGA XUSH KELIBSIZ!
+              </h2>
+              <div class="main-btn">
+                <a href="#">
+                  <i class="fas fa-graduation-cap"></i>
+                  BOSHLASH
+                </a>
+              </div>
             </div>
-        </section>
-        <!-- elementor section -->
-        <section id="elementor" class="elementor">
-            <div class="container">
-                <div class="row elementor__block1">
-                    <div class="elementor__item col-md-6">
-                        <div class="elementor__img">
-                            <i aria-hidden="true" class="fas fa-american-sign-language-interpreting"></i>
-                        </div>
-                        <div class="elementor__content">
-                            <h4 class="elementor__title">
-                                SURDO TARJIMON ISHTIROKIDAGI AKT KURSLAR
-                            </h4>
-                            <p class="elementor__text">
-                                Surdo tiliga tarjima qilingan sifatli darslarimiz yordamida o'z bilimingizni oshirib
-                                boring!
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="elementor__item col-md-6">
-                        <div class="elementor__img">
-                            <i aria-hidden="true" class="fas fa-business-time"></i>
-                        </div>
-                        <div class="elementor__content">
-                            <h4 class="elementor__title">
-                                ISTALGAN JOYDAN ISTALGAN VAQT O'RGANISH IMKONIYATI
-                            </h4>
-                            <p class="elementor__text">
-                                Platforma istalgan vaqtda qayerda bo'lishingizdan qat'i nazar, yangi davr kasblarini
-                                oson o'rganish imkonini beradi.
-                            </p>
-                        </div>
-                    </div>
+            <div class="col-md-6 content__media">
+              <a href="#">
+                <div class="home__img">
+                  <div class="area">
+                    <i class="far fa-play-circle"></i>
+                  </div>
                 </div>
-
-                <div class="row elementor__block2">
-                    <div class="elementor__item col-md-6">
-                        <div class="elementor__img">
-                            <i aria-hidden="true" class="fas fa-id-card-alt"></i>
-                        </div>
-                        <div class="elementor__content">
-                            <h4 class="elementor__title">
-                                SERTIFIKAT OLISH IMKONIYATI
-                            </h4>
-                            <p class="elementor__text">
-                                Kurs yakunlanganidan so'ng sertifikatlarga ega bo'ling.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="elementor__item col-md-6">
-                        <div class="elementor__img">
-                            <i aria-hidden="true" class="fab fa-android"></i>
-                        </div>
-                        <div class="elementor__content">
-                            <h4 class="elementor__title">
-                                ISTALGAN QURILMA YORDAMIDA BILIM OLING!
-                            </h4>
-                            <p class="elementor__text">
-                                Platformani istalgan tizimga ilova sifatida qo'shib oling!
-                            </p>
-                        </div>
-                    </div>
-                </div>
+              </a>
             </div>
-        </section>
-        <!-- gallery section -->
-        <section id="galery" class="gallery">
-            <div class="container">
-                <div class="gallery__block row">
-                    <div class="gallery__slider col-md-6">
-                        <div class="main">
-                            <div class="slider slider-for">
-                                <div class="slider__item1 slider__item"></div>
-                                <div class="slider__item2 slider__item"></div>
-                                <div class="slider__item3 slider__item"></div>
-                                <div class="slider__item4 slider__item"></div>
-                            </div>
-                            <div class="slider slider-nav">
-                                {% for num in '12341234'|make_list %}
-                                    <div><img src="static/img/{{ num }}.jpg" alt=""></div>
-                                {% endfor %}
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery__content col-md-6">
-                        <h2 class="gallery__title">
-                            Foto Galereya
-                        </h2>
-                        <p class="gallery__text">
-                            “Zamin Education” loyihasining ilk sinov-tajriba o‘quv jarayoni Muhammad Al-Xorazmiy
-                            nomidagi axborot-texnologiyalarini chuqurlashtirib o‘rgatishga ixtisoslashgan maktabda
-                            amalga oshirilmoqda.
-                        </p>
-                        <div class="main-btn2"><a href="#">
-                            <i aria-hidden="true" class="far fa-newspaper"></i>
-                            QO'SHIMCHA MA'LUMOT
-                        </a></div>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- elementor section -->
+    <section id="elementor" class="elementor">
+      <div class="container">
+        <div class="row elementor__block1">
+          <div class="elementor__item col-md-6">
+            <div class="elementor__img">
+              <i
+                aria-hidden="true"
+                class="fas fa-american-sign-language-interpreting"
+              ></i>
             </div>
-        </section>
-        <!-- partners section -->
+            <div class="elementor__content">
+              <h4 class="elementor__title">
+                SURDO TARJIMON ISHTIROKIDAGI AKT KURSLAR
+              </h4>
+              <p class="elementor__text">
+                Surdo tiliga tarjima qilingan sifatli darslarimiz yordamida o'z
+                bilimingizni oshirib boring!
+              </p>
+            </div>
+          </div>
 
-    </main>
-{% endblock %}
+          <div class="elementor__item col-md-6">
+            <div class="elementor__img">
+              <i aria-hidden="true" class="fas fa-business-time"></i>
+            </div>
+            <div class="elementor__content">
+              <h4 class="elementor__title">
+                ISTALGAN JOYDAN ISTALGAN VAQT O'RGANISH IMKONIYATI
+              </h4>
+              <p class="elementor__text">
+                Platforma istalgan vaqtda qayerda bo'lishingizdan qat'i nazar,
+                yangi davr kasblarini oson o'rganish imkonini beradi.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row elementor__block2">
+          <div class="elementor__item col-md-6">
+            <div class="elementor__img">
+              <i aria-hidden="true" class="fas fa-id-card-alt"></i>
+            </div>
+            <div class="elementor__content">
+              <h4 class="elementor__title">SERTIFIKAT OLISH IMKONIYATI</h4>
+              <p class="elementor__text">
+                Kurs yakunlanganidan so'ng sertifikatlarga ega bo'ling.
+              </p>
+            </div>
+          </div>
+
+          <div class="elementor__item col-md-6">
+            <div class="elementor__img">
+              <i aria-hidden="true" class="fab fa-android"></i>
+            </div>
+            <div class="elementor__content">
+              <h4 class="elementor__title">
+                ISTALGAN QURILMA YORDAMIDA BILIM OLING!
+              </h4>
+              <p class="elementor__text">
+                Platformani istalgan tizimga ilova sifatida qo'shib oling!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- gallery section -->
+    <section id="galery" class="gallery">
+      <div class="container">
+        <div class="gallery__block row">
+          <div class="gallery__slider col-md-6">
+            <div class="main">
+              <div class="slider slider-for">
+                <div class="slider__item1 slider__item"></div>
+                <div class="slider__item2 slider__item"></div>
+                <div class="slider__item3 slider__item"></div>
+                <div class="slider__item4 slider__item"></div>
+              </div>
+              <div class="slider slider-nav">
+                {% for num in '12341234'|make_list %}
+                <div><img src="static/img/{{ num }}.jpg" alt="" /></div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="gallery__content col-md-6">
+            <h2 class="gallery__title">Foto Galereya</h2>
+            <p class="gallery__text">
+              “Zamin Education” loyihasining ilk sinov-tajriba o‘quv jarayoni
+              Muhammad Al-Xorazmiy nomidagi axborot-texnologiyalarini
+              chuqurlashtirib o‘rgatishga ixtisoslashgan maktabda amalga
+              oshirilmoqda.
+            </p>
+            <div class="main-btn2">
+              <a href="#">
+                <i aria-hidden="true" class="far fa-newspaper"></i>
+                QO'SHIMCHA MA'LUMOT
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- partners section -->
+  </main>
+  {% endblock %}
+</main>
