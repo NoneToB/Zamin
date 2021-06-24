@@ -64,7 +64,7 @@
                 <span class="product-catagory">
                   {{ course.category.all|join:", " }}
                 </span>
-                <h4><a href="">{{ course.title }}</a></h4>
+                <h4><a href="{% url 'course-detail' course.slug %}">{{ course.title }}</a></h4>
                 <p>{{ course.description | cut:"50" }}</p>
                 <div class="product-bottom-details">
                   <div class="product-price">
@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <div class="card-btn">
-                  <a href="#">
+                  <a href="{% url 'course-detail' course.slug %}">
                     <i class="fa fa-shopping-cart"></i>
                     Kursga yozilish
                   </a>
