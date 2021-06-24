@@ -1,7 +1,8 @@
-from datetime import timedelta, datetime
+from datetime import timedelta
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from account.models import Profile
 from taggit.managers import TaggableManager
 from .helpers import unique_slugify
 
@@ -30,11 +31,6 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-
-
-class Profile(AbstractUser):
-    is_author = models.BooleanField(default=False)
-    # pass
 
 
 class Course(models.Model):
