@@ -39,14 +39,16 @@
                         <div class="product-block">
                             {% for course in courses %}
                                 <div class="product-card">
-                                    <div class="badge">{{ course.difficulty|quality }}</div>
-                                    <div class="product-tumb">
+                                    <div class="badge">{{ course.difficulty }}</div>
+                                    <div class="product-tumb"
+                                         style="background-image: url('uploads/{{ course.thumbnail }}')">
                                     </div>
                                     <div class="product-details">
-                                        <span class="product-catagory">Design, Photoshop</span>
-                                        <h4><a href="">Photoshop Asoslari</a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus
-                                            nostrum!</p>
+                                        <span class="product-catagory">
+                                            {{ course.category.all|join:", " }}
+                                        </span>
+                                        <h4><a href="">{{ course.title }}</a></h4>
+                                        <p>{{ course.description | cut:"50"}}</p>
                                         <div class="product-bottom-details">
                                             <div class="product-price"><i class="fas fa-eye mr-2"></i>200</div>
                                             <div class="product-links">
