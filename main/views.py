@@ -20,6 +20,6 @@ def courses(request):
 
 
 def course_detail(request, course_slug):
-    courses() 
+    courses()
     context = {}
     return render(request, 'main/course-detail.html', context)
