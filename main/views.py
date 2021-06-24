@@ -7,8 +7,12 @@ def home(request):
 
 def courses(request):
     courses_list = Course.objects.all()[:9]
+    categories = Category.objects.all()
+    difficulties = Difficulty.objects.all()
     context = {
         'active_page': 2,
         'courses': courses_list,
+        'categories': categories,
+        'difficulties': difficulties,
     }
     return render(request, 'main/courses.html', context)
