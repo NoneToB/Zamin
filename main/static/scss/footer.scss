@@ -1,5 +1,5 @@
 @import "variables.scss";
-
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 .contacts__content {
   display: flex;
   justify-content: space-between;
@@ -15,20 +15,27 @@
   row-gap: 5px;
   i {
     font-size: 50px;
-    color: #ff0000;
+    color: #6c7c69;
+    &:hover {
+      color: #ff0000;
+    }
   }
   h4 {
-    color: #ff0000;
+    color: #6c7c69;
+    &:hover {
+      color: #ff0000;
+    }
   }
 }
 .courses__title {
   font-size: 40px;
-  color: #1d9da0;
-  text-transform: uppercase !important;
+  color: #6c7c69;
+  text-transform: capitalize !important;
   margin: 20px 0px;
+  font-family: "Playfair Display", serif;
 }
 .contacts__number {
-  color: $main;
+  color: #6c7c69;
 }
 .footer {
   font-size: 14px;
@@ -36,4 +43,20 @@
   background-color: $second;
   padding: 20px;
   text-align: center;
+}
+.foooter__btn {
+  width: 200px;
+  padding: 12px;
+  background-color: transparent;
+  border: 2px solid #6c7c69;
+  color: #6c7c69;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  &:hover {
+    transform: all 0.3s;
+    background-color: #6c7c69;
+    color: #fff;
+  }
 }
