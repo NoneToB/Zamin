@@ -552,6 +552,7 @@ section.courses {
   height: 200px;
   padding: 50px;
   background: #f0f0f0;
+  background-image: url("../img/photoshop.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1315,8 +1316,7 @@ li.active::after {
 
 .courses__title {
   font-size: 40px;
-  color: #6C7C69;
-  text-shadow: 0px 0px 10px #ccc;
+  color: #1d9da0;
   margin-bottom: 35px;
 }
 
@@ -1326,7 +1326,7 @@ li.active::after {
 
 .footer {
   font-size: 14px;
-  color: #6C7C69;
+  color: #6c7c69;
   background-color: #F2EAE3;
   padding: 20px;
   text-align: center;
