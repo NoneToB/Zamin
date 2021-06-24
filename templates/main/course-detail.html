@@ -21,8 +21,10 @@
                             <div class="course__social row justify-content-between col-12">
                                 <div>Muallif: <b>{{ course.author }}</b></div>
                                 <div>Kurs darajasi: <b>{{ course.difficulty }}</b></div>
-                                <div class="social-networks">Ulashish: <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-share-url="https://zamineducation.uz/courses/" data-comment="Zamin Education platformasidagi ushbu kursni sizga tavfsiya qilaman!" data-size="large" data-text="notext"></script>
-                                    <a href="https://t.me/share/url?url=url&text=text">App</a>
+                                <div class="social-networks">Ulashish: 
+                                    <a href="https://t.me/share/url?url=https://zamineducation.uz/courses/{{ course.slug }}&text=Ushbu kursni ko`rib chiqishingizni tavfsiya qilaman! #ZaminEducation"> 
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="row course__info">
@@ -96,4 +98,3 @@
             </div>
         </section>
     </main>
-{% endblock %}
