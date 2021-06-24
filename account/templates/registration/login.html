@@ -7,7 +7,7 @@
                 {#                      onsubmit="return false" autocomplete="off"#}
                 >
                     <h1 style="font-size: 32px;">Ro'yxatdan o'tish</h1>
-                    <h4 class="signup__subtitle">Ro'yxatdan o'tmagan bo'lsangiz <a href="signup.html"><span>Ro'yxatdan o'tish</span></a>
+                    <h4 class="signup__subtitle">Ro'yxatdan o'tmagan bo'lsangiz <a href="{% url 'register' %}"><span>Ro'yxatdan o'tish</span></a>
                     </h4>
                     {% csrf_token %}
                     {% if form.errors %}
