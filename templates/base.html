@@ -128,9 +128,8 @@
             <h3 class="courses__title">
               Eng so'ngi bilimlarga<br />ega bo'ling!
             </h3>
-            <div class="main-btn2" style="width: 200px">
-              <a href="{% url 'courses' %}">Kurslar</a>
-            </div>
+            <a class="foooter__btn" href="{% url 'courses' %}">Kurslar</a>
+            <br />
           </div>
           <div class="courses__banner">
             <div class="courses__banner-img"></div>
@@ -142,8 +141,14 @@
           <div class="contacts__content">
             <img src="{% static 'img/logo.png' %}" alt="" />
             <div class="zamin__youtube">
-              <i class="fab fa-youtube"></i>
-              <h4>Zamin Education</h4>
+              <a
+                style="text-align: center"
+                target="_blank"
+                href="https://www.youtube.com/channel/UCixweloJK3QPIdAn81JlFmw"
+              >
+                <i class="fab fa-youtube"></i>
+                <h4>Biz "YouTube"damiz!</h4>
+              </a>
             </div>
             <div class="contacts__number">
               <div class="phone">Telefon: +998 90 319-51-60</div>
@@ -151,6 +156,7 @@
             </div>
           </div>
         </div>
+        <br />
       </div>
       <div class="footer">
         <span
