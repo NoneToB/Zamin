@@ -20,6 +20,8 @@ def courses(request):
 
 
 def course_detail(request, course_slug):
-    courses()
-    context = {}
+    course = Course.objects.get(slug__exact=course_slug)
+    context = {
+        'course': course
+    }
     return render(request, 'main/course-detail.html', context)
