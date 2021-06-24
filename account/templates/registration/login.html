@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+    <main>
+        <section id="login" class="login">
+            <div class="container">
+                <form action="{% url 'login' %}" method="POST" class="signup"
+                {#                      onsubmit="return false" autocomplete="off"#}
+                >
+                    <h1 style="font-size: 32px;">Ro'yxatdan o'tish</h1>
+                    <h4 class="signup__subtitle">Ro'yxatdan o'tmagan bo'lsangiz <a href="signup.html"><span>Ro'yxatdan o'tish</span></a>
+                    </h4>
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <p>
+                            Sizning ma'lumotingiz topilmadi
+                            Qaytadan urinib ko'ring.
+                        </p>
+                    {% endif %}
+                    <div class="signup__field">
+                        <input class="signup__input"  type="text" name="username" id="id_username" required/>
+                        <label class="signup__label" for="id_username">Email</label>
+                    </div>
+
+                    <div class="signup__field">
+                        <input class="signup__input" type="password" name="password" id="id_password" required/>
+                        <label class="signup__label" for="id_password">Parol</label>
+                    </div>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <button type="submit" value="Log-in" class="main-btn-login">Kirish</button>
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock %}
