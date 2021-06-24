@@ -362,7 +362,7 @@ section.courses {
 }
 
 section.login {
-  background-color: #F2EAE3;
+  background-color: #f2eae3;
   background-image: url(../img/gallery-bg.png);
   background-size: 38% auto;
 }
@@ -508,12 +508,12 @@ section.courses {
   width: calc(100% - 24px);
   font-weight: normal;
   font-size: 16px;
-  color: #7A7A7A;
+  color: #7a7a7a;
   height: 35px;
 }
 
 .search-box {
-  border: 1px solid #BABABA;
+  border: 1px solid #bababa;
   border-radius: 6px;
   overflow: hidden;
   padding: 0 6px;
@@ -611,7 +611,7 @@ section.courses {
 
 .product-price {
   font-size: 16px;
-  color: #E1E1E1;
+  color: #e1e1e1;
   font-weight: 600;
 }
 
@@ -650,7 +650,7 @@ section.courses {
 
 section.dashboard {
   padding: 0 !important;
-  background-color: #F2EAE3;
+  background-color: #f2eae3;
   background-image: url(../img/gallery-bg.png);
   background-size: 38% auto;
   border-bottom: 1px solid #dcdfe5;
@@ -691,7 +691,7 @@ section.dashboard .container {
   color: rgba(29, 157, 160, 0.7);
 }
 .dashboard__menu ul li:hover {
-  background-color: #EDF0F9;
+  background-color: #edf0f9;
 }
 
 .dashboard__list-top {
@@ -773,7 +773,7 @@ section.dashboard .container {
 
 section.course-detail {
   padding: 0 !important;
-  background-color: #F2EAE3;
+  background-color: #f2eae3;
   background-image: url(../img/gallery-bg.png);
   background-size: 38% auto;
   border-bottom: 1px solid #dcdfe5;
@@ -796,6 +796,7 @@ section.course-detail .container {
 }
 
 .course__banner {
+  background-image: url("../img/photoshop.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
@@ -1316,7 +1317,8 @@ li.active::after {
 .courses__title {
   font-size: 40px;
   color: #1d9da0;
-  margin-bottom: 35px;
+  text-transform: uppercase !important;
+  margin: 20px 0px;
 }
 
 .contacts__number {
