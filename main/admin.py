@@ -31,3 +31,10 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'created', 'updated']
     prepopulated_fields = {'slug': ('title',)}
 
+
+@admin.register(Difficulty)
+class DifficultyAdmin(admin.ModelAdmin):
+    # list_display = ['title', 'slug', 'created', 'updated']
+    prepopulated_fields = {'slug': ('title',)}
+    pass
+

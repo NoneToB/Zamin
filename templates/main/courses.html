@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
     <main>
         <section id="courses" class="courses">
@@ -38,29 +37,32 @@
                     </div>
                     <div class="col-md-10">
                         <div class="product-block">
-                            <div class="product-card">
-                                <div class="badge">Hamma uchun</div>
-                                <div class="product-tumb">
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-catagory">Design, Photoshop</span>
-                                    <h4><a href="">Photoshop Asoslari</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus
-                                        nostrum!</p>
-                                    <div class="product-bottom-details">
-                                        <div class="product-price"><i class="fas fa-eye mr-2"></i>200</div>
-                                        <div class="product-links">
-                                            <a href=""><i class="fa fa-heart"></i></a>
+                            {% for course in courses %}
+                                <div class="product-card">
+                                    <div class="badge">{{ course.difficulty|quality }}</div>
+                                    <div class="product-tumb">
+                                    </div>
+                                    <div class="product-details">
+                                        <span class="product-catagory">Design, Photoshop</span>
+                                        <h4><a href="">Photoshop Asoslari</a></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus
+                                            nostrum!</p>
+                                        <div class="product-bottom-details">
+                                            <div class="product-price"><i class="fas fa-eye mr-2"></i>200</div>
+                                            <div class="product-links">
+                                                <a href=""><i class="fa fa-heart"></i></a>
+                                            </div>
+
                                         </div>
+                                        <div class="card-btn"><a href="#">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Kursga yozilish
+                                        </a></div>
 
                                     </div>
-                                    <div class="card-btn"><a href="#">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        Kursga yozilish
-                                    </a></div>
-
                                 </div>
-                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
                 </div>
