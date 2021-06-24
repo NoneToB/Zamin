@@ -796,7 +796,6 @@ section.course-detail .container {
 }
 
 .course__banner {
-  background-image: url("../img/photoshop.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;

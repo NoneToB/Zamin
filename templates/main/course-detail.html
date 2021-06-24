@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main>
+        <section id="courses" class="courses course-detail">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="stars mt-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            (0) 0
+                        </div>
+                        <div class="course__content">
+                            <h3 class="course__name mb-5 mt-2">
+                                {{ course.title }}
+                            </h3>
+                            <div class="course__social row justify-content-between col-12">
+                                <div>Muallif: <b>{{ course.author }}</b></div>
+                                <div>Kurs darajasi: <b>{{ course.difficulty }}</b></div>
+                                <div class="social-networks">Ulashish: <a href="#"><i class="fab fa-facebook-f"></i></a><a
+                                        href="#"><i class="fab fa-twitter"></i></a><a href="#"><i
+                                        class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-tumblr"></i></a>
+                                </div>
+                            </div>
+                            <div class="row course__info">
+                                <div class="col-md-4 course__info-item">
+                                    Bo'lim<span>{{ course.category.all|join:" " }}</span></div>
+                                {#                                TODO: user Count qo'shish#}
+                                <div class="col-md-4 course__info-item">Umumiy o'quvchilar<span>28</span></div>
+                                <div class="col-md-4 course__info-item">So'ngi
+                                    yangilanish<span>{{ course.updated|date:"d-F Y" }}</span></div>
+
+                            </div>
+                            <div class="course__about">
+                                <h4 class="course__title">
+                                    Tavsif
+                                </h4>
+                                <p class="course__text">
+                                    {{ course.description }}
+                                </p>
+                            </div>
+                            <div class="course__time">
+                                <div class="course__time-header">
+                                    <h4>Kurs mundarijasi</h4>
+                                    <span>{{ course.lessons.count }} ta dars mavjud</span>
+                                </div>
+                                <ul class="course__time-table">
+                                    <li>
+                                        <div><b>{{ course.title }}</b></div>
+                                    </li>
+                                    {% for lesson in course.lessons.all %}
+
+
+                                        <li>
+                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
+                                            <div><b>{{ lesson.duration }}</b></div>
+                                        </li>
+                                    {% endfor %}
+                                    {#                                    <li>#}
+                                    {#                                        <div><i class="far fa-question-circle"></i>1-dars yuzasidan savollar</div>#}
+                                    {#                                    </li>#}
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="detail__card">
+                            <div class="course__banner"
+                                 style="background-image: url('/uploads/{{ course.thumbnail }}')">
+                            </div>
+                            <div class="detail__card-content">
+                                <span>...</span>
+                                <div class="main-btn2 course-btn">
+                                    <a href="#">Kursga yozilish</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course__info-item mt-5 d-flex flex-column">
+                            <h4>Teglar</h4>
+                            <span>
+                                {% for tag in course.tags.all %}
+
+
+                                <a href="#">{{ tag }}</a>
+                                {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+{% endblock %}
