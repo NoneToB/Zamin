@@ -18,9 +18,10 @@ class UserRegistrationForm(forms.ModelForm):
             'date_of_birth': DateInput
         }
         labels = {
-            'date_of_birth': ''
+            'date_of_birth': '',
+            'profile_pic': '',
         }
-        fields = ('username', 'first_name', 'date_of_birth','email', 'school')
+        fields = ('username', 'first_name', 'date_of_birth', 'email', 'school')
 
     def clean_password2(self):
         cd = self.cleaned_data
