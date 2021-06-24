@@ -14,7 +14,6 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('taggit', '0004_auto_20210623_2142'),
         ('auth', '0012_alter_user_first_name_max_length'),
     ]
 
