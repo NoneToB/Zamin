@@ -670,8 +670,13 @@ section.course-detail {
   background-size: 38% auto;
   border-bottom: 1px solid #dcdfe5;
   .container {
-    background-color: #ffffff;
-    padding: 15px 15px;
+    background-color: transparent;
+    padding: 54px 0px;
+    .app {
+      padding: 24px;
+      background-color: #fff;
+      border-radius: 15px;
+    }
   }
 }
 
@@ -1021,4 +1026,14 @@ label {
 
 .next {
   color: $main;
+}
+.ratings {
+  color: #1a8588;
+
+  .progress {
+    margin: 5px 0px;
+    .progress-bar {
+      background-color: #1a8588;
+    }
+  }
 }
