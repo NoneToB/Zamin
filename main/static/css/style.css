@@ -1141,13 +1141,15 @@ label {
 }
 
 .ratings {
-  color: #1a8588;
+  color: #6c7c69;
 }
 .ratings .progress {
   margin: 5px 0px;
+  height: auto;
 }
 .ratings .progress .progress-bar {
-  background-color: #1a8588;
+  background-color: #6c7c69;
+  padding: 5px;
 }
 
 .header__top {

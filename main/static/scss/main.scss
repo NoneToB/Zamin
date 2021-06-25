@@ -1028,12 +1028,14 @@ label {
   color: $main;
 }
 .ratings {
-  color: #1a8588;
+  color: #6c7c69;
 
   .progress {
     margin: 5px 0px;
     .progress-bar {
-      background-color: #1a8588;
+      background-color: #6c7c69;
+      padding: 5px;
     }
+    height: auto;
   }
 }
