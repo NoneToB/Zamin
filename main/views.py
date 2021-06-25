@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import *
 
@@ -21,8 +22,10 @@ def courses(request):
 
 def course_detail(request, course_slug):
     course = Course.objects.get(slug__exact=course_slug)
-    user = request.user
-    is_enrolled = Enrollment.objects.filter(user=user, course=course).exists()
+    is_enrolled = False
+    if request.user.is_authenticated:
+        user = request.user
+        is_enrolled = Enrollment.objects.filter(user=user, course=course).exists()
     context = {
         'course': course,
         'is_enrolled': is_enrolled,
@@ -30,6 +33,7 @@ def course_detail(request, course_slug):
     return render(request, 'main/course-detail.html', context)
 
 
+@login_required
 def enroll_course(request, course_id):
     enrollment = Enrollment(user=request.user, course_id=course_id)
     enrollment.save()

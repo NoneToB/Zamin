@@ -6,20 +6,58 @@
             <div class="container">
                 <div class="dashboard__content">
                     <div class="dashboard__top">
-                        <div class="dashboard__img" style="background-image: url('/uploads/{{ request.user.profile_pic }}');background-size:cover"></div>
+                        <div class="dashboard__img"
+                             style="background-image: url('/uploads/{{ request.user.profile_pic }}');background-size:cover"></div>
                         <h3 class="profile__title">{{ request.user.full_name }}</h3>
                     </div>
                     <div class="row dashboard__bottom">
                         <div class="col-md-3">
                             <div class="dashboard__menu">
                                 <ul class="dashboard__list-top">
-                                    <li><a href="#"><i class="fas fa-tachometer-alt"></i>Boshqaruv paneli</a></li>
-                                    <li><a href="#"><i class="fas fa-user"></i>Mening profilim</a></li>
-                                    <li><a href="#"><i class="fas fa-graduation-cap"></i>Kurslar</a></li>
-                                    {#                                TODO: do it#}
-                                    {#                                <li class="active"><a href="#"><i class="fas fa-bookmark"></i>Saqlangan kurslar</a></li>#}
-                                    <li><a href="#"><i class="fas fa-star-half-alt"></i>Fikrlar</a></li>
-                                    <li><a href="#"><i class="fas fa-cubes"></i>Mening Test Urinishlarim</a></li>
+                                    {% if active_section == 'home' %}
+                                        <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i>Boshqaruv
+                                            paneli</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'dashboard-home' %}"><i class="fas fa-tachometer-alt"></i>Boshqaruv
+                                            paneli</a></li>
+                                    {% endif %}
+
+                                    {% if active_section == 'my_profile' %}
+                                        <li class="active"><a href=""><i class="fas fa-user"></i>Mening profilim</a>
+                                        </li>
+                                    {% else %}
+                                        <li><a href="{% url 'dashboard-profile' %}"><i class="fas fa-user"></i>Mening
+                                            profilim</a></li>
+                                    {% endif %}
+
+                                    {% if active_section == 'my_courses' %}
+                                        <li class="active"><a href="#"><i class="fas fa-graduation-cap"></i>Kurslar</a>
+                                        </li>
+                                    {% else %}
+                                        <li><a href="{% url 'dashboard-courses' %}"><i
+                                                class="fas fa-graduation-cap"></i>Kurslar</a></li>
+                                    {% endif %}
+
+                                    {% if active_section == 'saved_courses' %}
+                                        <li class="active"><a href="#"><i class="fas fa-bookmark"></i>Saqlangan kurslar</a>
+                                    </li>
+                                    {% else %}
+                                        <li><a href="{% url 'dashboard-saved' %}"><i class="fas fa-bookmark"></i>Saqlangan kurslar</a>
+                                    </li>
+                                    {% endif %}
+                                
+                                    {% if active_section == 'comments' %}
+                                        <li class="active"><a href="#"><i class="fas fa-star-half-alt"></i>Fikrlar</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'dashboard-comments' %}"><i class="fas fa-star-half-alt"></i>Fikrlar</a></li>
+                                    {% endif %}
+                                
+                                    {% if active_section == 'my_test_attempts' %}
+                                        <li class="active"><a href="#"><i class="fas fa-cubes"></i>Mening Test Urinishlarim</a></li>
+                                    {% else %}
+                                        <li><a href="{% url 'dashboard-attempts' %}"><i class="fas fa-cubes"></i>Mening Test Urinishlarim</a></li>
+                                    {% endif %}
+                                    
                                 </ul>
                                 <ul class="dashboard__list-bottom">
                                     <li><a href="#"><i class="fas fa-cogs"></i>Sozlamalar</a></li>

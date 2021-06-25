@@ -72,9 +72,9 @@
                 {% else %}
                     <li><a href="{% url 'courses' %}">Kurslar</a></li>
                 {% endif %} {% if active_page == 3 %}
-                    <li class="active"><a href="#">Boshqaruv paneli</a></li>
+                    <li class="active"><a href="{% url 'dashboard-home' %}">Boshqaruv paneli</a></li>
                 {% else %}
-                    <li><a href="#">Boshqaruv paneli</a></li>
+                    <li><a href="{% url 'dashboard-home' %}">Boshqaruv paneli</a></li>
                 {% endif %}
                 </ul>
                 <span class="menu-burger"><i class="fas fa-bars"></i></span>
@@ -95,10 +95,10 @@
             {% else %}
                 <li><a href="{% url 'courses' %}">Kurslar</a></li>
             {% endif %} {% if active_page == 3 %}
-                <li><a class="menu-active" href="">Boshqaruv paneli</a></li>
+                <li><a class="menu-active" href="{% url 'dashboard-home' %}">Boshqaruv paneli</a></li>
 
             {% else %}
-                <li><a href="#">Boshqaruv paneli</a></li>
+                <li><a href="{% url 'dashboard-home' %}">Boshqaruv paneli</a></li>
             {% endif %}
             </ul>
         </div>
