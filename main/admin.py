@@ -8,15 +8,16 @@ class LessonsInline(admin.StackedInline):
     exclude = ['slug']
     ordering = ['order_number']
 
+
 # Register your models here.
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     pass
 
 
-# @admin.register(Lesson)
-# class LessonAdmin(admin.ModelAdmin):
-#     prepopulated_fields = {'slug': ('title',)}
+@admin.register(Enrollment)
+class EnrollmentAdmin(admin.ModelAdmin):
+    list_display = ['user', 'course', 'enrollment_date']
 
 
 @admin.register(Course)

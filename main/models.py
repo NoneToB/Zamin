@@ -78,3 +78,15 @@ class Lesson(models.Model):
     def save(self, *args, **kwargs):
         unique_slugify(self, self.title)
         super(Lesson, self).save(*args, **kwargs)
+
+
+class Enrollment(models.Model):
+    user = models.ForeignKey(Profile, models.CASCADE, related_name='courses')
+    course = models.ForeignKey(Course, models.CASCADE, related_name='users')
+    enrollment_date = models.DateTimeField(auto_now_add=True)
+
+
+class LessonCompletion(models.Model):
+    user = models.ForeignKey(Profile, models.CASCADE, related_name='completed_lessons')
+    course = models.ForeignKey(Course, models.CASCADE, related_name='completed_users')
+    completed_date = models.DateTimeField(auto_now_add=True)
