@@ -29,7 +29,7 @@
                     </button>
                 </div>
                 <div id="all-courses" class="tabcontent tab-active">
-                    <button class="accordion">Photoshop asoslari</button>
+                    <button class="accordion">{{ course.title}}</button>
                     <div class="panel">
                         <ul class="lesson__dashboard-courses">
                             {% for lesson in course.lessons.all %}
