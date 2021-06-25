@@ -56,7 +56,7 @@
                                     {% for lesson in course.lessons.all %}
 
 
-                                        <li>
+                                        <li class="completed-course">
                                             <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
                                             <div><b>{{ lesson.duration }}</b></div>
                                         </li>
@@ -118,7 +118,11 @@
                             <div class="detail__card-content">
                                 <span>...</span>
                                 <div class="main-btn2 course-btn">
-                                    <a href="#">Kursga yozilish</a>
+                                    {% if is_enrolled %}
+                                        <a href="#">Davom ettirish</a>
+                                    {% else %}
+                                        <a href="{% url 'course-enroll' course.id %}">Kursga yozilish</a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -128,9 +132,10 @@
                                 {% for tag in course.tags.all %}
 
 
-                                <a href="#">{{ tag }}</a>
-                                {% endfor %}
+                                <a href="#">{{ tag|title }}</a>
 
+                                {% endfor %}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -138,4 +143,8 @@
             </div>
         </section>
     </main>
+<<<<<<< HEAD
     {%endblock%}
+=======
+{% endblock %}
+>>>>>>> 264cbf3c68e5e93307c3dcb74f9bb6cf3b023783

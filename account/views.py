@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm
 
 
@@ -10,11 +11,11 @@ def register(request):
             new_user.set_password(
                 user_form.cleaned_data['password'])
             new_user.save()
-            return render(request,
-                          'account/register_done.html',
-                          {'new_user': new_user})
+            login(request, user=new_user)
+            return redirect('home')
     else:
         user_form = UserRegistrationForm()
     return render(request,
-                  'account/register.html',
+                  'registration/register.html',
                   {'user_form': user_form})
+

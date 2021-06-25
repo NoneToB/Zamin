@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 
 
@@ -21,7 +21,17 @@ def courses(request):
 
 def course_detail(request, course_slug):
     course = Course.objects.get(slug__exact=course_slug)
+    user = request.user
+    is_enrolled = Enrollment.objects.filter(user=user, course=course).exists()
     context = {
-        'course': course
+        'course': course,
+        'is_enrolled': is_enrolled,
     }
     return render(request, 'main/course-detail.html', context)
+
+
+def enroll_course(request, course_id):
+    enrollment = Enrollment(user=request.user, course_id=course_id)
+    enrollment.save()
+    course_slug = Course.objects.get(id=course_id).slug
+    return redirect('course-detail', course_slug)
