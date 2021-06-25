@@ -1,3 +1,11 @@
 .completed-course {
   background-color: #6c7c695b;
 }
+.active-lesson{
+  border-left: 10px solid #23cb09;
+  background-color: rgba(250, 255, 245, 0.36);
+}
+.blocked-lesson{
+  border-left: 10px solid #ef1458;
+  background-color: rgba(250, 255, 245, 0.36);
+}
