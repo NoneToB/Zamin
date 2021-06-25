@@ -780,8 +780,13 @@ section.course-detail {
   border-bottom: 1px solid #dcdfe5;
 }
 section.course-detail .container {
-  background-color: #ffffff;
-  padding: 15px 15px;
+  background-color: transparent;
+  padding: 54px 0px;
+}
+section.course-detail .container .app {
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 15px;
 }
 
 .detail__card {
@@ -1133,6 +1138,16 @@ label {
 
 .next {
   color: #1D9DA0;
+}
+
+.ratings {
+  color: #1a8588;
+}
+.ratings .progress {
+  margin: 5px 0px;
+}
+.ratings .progress .progress-bar {
+  background-color: #1a8588;
 }
 
 .header__top {
