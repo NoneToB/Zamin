@@ -72,6 +72,17 @@ class Lesson(models.Model):
     slug = models.SlugField()
     order_number = models.PositiveIntegerField(default=10)
 
+    @property
+    def next_lesson(self):
+        siblings = self.course.lessons.all()
+        grater_siblings = siblings.filter(order_number__gt=self.order_number)
+        if grater_siblings.exists():
+            return grater_siblings.first()
+        else:
+            return None
+    class Meta:
+        ordering = ['order_number', 'id']
+
     def __str__(self):
         return self.title
 
@@ -88,5 +99,5 @@ class Enrollment(models.Model):
 
 class LessonCompletion(models.Model):
     user = models.ForeignKey(Profile, models.CASCADE, related_name='completed_lessons')
-    course = models.ForeignKey(Course, models.CASCADE, related_name='completed_users')
+    lesson = models.ForeignKey(Lesson, models.CASCADE, related_name='completed_users')
     completed_date = models.DateTimeField(auto_now_add=True)

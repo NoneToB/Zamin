@@ -1,0 +1,190 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vanilla.css' %}">
+    <!-- Fontawesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<main class="lesson-main">
+    <div class="lesson-row">
+        <div class="lesson__dashboard">
+            <div class="lesson__content">
+                <div class="tab">
+                    <button class="tablinks lesson-tab active" onclick="openCity(event, 'all-courses')"><i
+                            class="fas fa-book-open"></i>Dars jadvali
+                    </button>
+                    <button class="tablinks lesson-tab" onclick="openCity(event, 'active-courses')"><i
+                            class="fas fa-question-circle"></i>Savol berish
+                    </button>
+                </div>
+                <div id="all-courses" class="tabcontent tab-active">
+                    <button class="accordion">Photoshop asoslari</button>
+                    <div class="panel">
+                        <ul class="lesson__dashboard-courses">
+                            {% for lesson in course.lessons.all %}
+                                <a href={% url 'lesson-view' course.slug lesson.slug %}>
+                                    {% if lesson == current_lesson %}
+
+                                        <li class="active-lesson">
+                                            {% else %}
+                                        <li>
+                                    {% endif %}
+                                    <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
+                                    <div><b>{{ lesson.duration }}</b><input type="checkbox" class="ml-2"></div>
+                                    </li>
+                                </a>
+                            {% endfor %}
+                            {#                                <li>#}
+                            {#                                    <div><i class="far fa-question-circle"></i>1-dars yuzasidan savollar</div>#}
+                            {#                                    <div><i class="fas fa-lock"></i><b>20 min</b><input type="checkbox" class="ml-2"></div>#}
+                            {#                                </li>#}
+                        </ul>
+                    </div>
+
+                    {#                        <button class="accordion">Web dasturlash</button>#}
+                    {#                        <div class="panel">#}
+                    {#                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>#}
+                    {#                        </div>#}
+                    {##}
+                    {#                        <button class="accordion">Php asoslari</button>#}
+                    {#                        <div class="panel">#}
+                    {#                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>#}
+                    {#                        </div>#}
+                </div>
+
+                <div id="active-courses" class="tabcontent question-screen">
+
+                    <div class="no-question">
+                        <h2><i class="fas fa-question"></i></h2>
+                        <h3>Hali savollar yo'q</h3>
+                        <p>Savolingizni birinchilardan bo'lib bering! Keyingi bosqichda tafsilotlarni qo'shishingiz
+                            mumkin.</p>
+                    </div>
+                    <div class="line my-5"></div>
+                    <h3 class="question__title">
+                        Yangi savol bering
+                    </h3>
+                    <form action="" class="my-3 px-2 py-3">
+                        <input type="text" placeholder="Savol">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="lesson__play">
+            <div class="lesson-header">
+                <div class="menu-content">
+                    <i class="fas fa-bars"></i>
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        Bosh sahifaga qaytish
+                    </a>
+                    <div>
+                        <i class="fab fa-youtube"></i> {{ current_lesson.title }}
+                    </div>
+                    <a href="">
+                        <i class="fas fa-check"></i> Darsni yakunlash
+                    </a>
+                </div>
+            </div>
+
+            <div class="header-main">
+                <iframe width="100%" height="500px" src="{{ current_lesson.url}}"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                {% if current_lesson.next_lesson %}
+                    <a href="{% url 'lesson-view' course.slug current_lesson.next_lesson.slug %}" class="next">Keyingisi<i class="fas fa-arrow-right ml-2"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+    var oDoc, sDefTxt;
+
+    function initDoc() {
+        oDoc = document.getElementById("textBox");
+        sDefTxt = oDoc.innerHTML;
+        if (document.compForm.switchBox.checked) {
+            setDocMode(true);
+        }
+    }
+
+    function formatDoc(sCmd, sValue) {
+        if (validateMode()) {
+            document.execCommand(sCmd, false, sValue);
+            oDoc.focus();
+        }
+    }
+
+    function validateMode() {
+        if (!document.compForm.switchBox.checked) {
+            return true;
+        }
+        alert("Uncheck \"Показать HTML\"."); /* убрать галочку из "Показать HTML" */
+        oDoc.focus();
+        return false;
+    }
+
+    function setDocMode(bToSource) {
+        var oContent;
+        if (bToSource) {
+            oContent = document.createTextNode(oDoc.innerHTML);
+            oDoc.innerHTML = "";
+            var oPre = document.createElement("pre");
+            oDoc.contentEditable = false;
+            oPre.id = "sourceText";
+            oPre.contentEditable = true;
+            oPre.appendChild(oContent);
+            oDoc.appendChild(oPre);
+            document.execCommand("defaultParagraphSeparator", false, "div");
+        } else {
+            if (document.all) {
+                oDoc.innerHTML = oDoc.innerText;
+            } else {
+                oContent = document.createRange();
+                oContent.selectNodeContents(oDoc.firstChild);
+                oDoc.innerHTML = oContent.toString();
+            }
+            oDoc.contentEditable = true;
+        }
+        oDoc.focus();
+    }
+
+    function printDoc() {
+        if (!validateMode()) {
+            return;
+        }
+        var oPrntWin = window.open("", "_blank", "width=450,height=470,left=400,top=100,menubar=yes,toolbar=no,location=no,scrollbars=yes");
+        oPrntWin.document.open();
+        oPrntWin.document.write("<!doctype html><html><head><title>Print<\/title><\/head><body onload=\"print();\">" + oDoc.innerHTML + "<\/body><\/html>");
+        oPrntWin.document.close(); /*  */
+    }
+
+
+</script>
+</body>
+</html>

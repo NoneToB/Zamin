@@ -188,7 +188,7 @@
               <span>...</span>
               <div class="main-btn2 course-btn">
                 {% if is_enrolled %}
-                <a href="#">Davom ettirish</a>
+                <a href="{% url 'lesson-view' course.slug %}">Davom ettirish</a>
                 {% else %}
                 <a href="{% url 'course-enroll' course.id %}"
                   >Kursga yozilish</a
