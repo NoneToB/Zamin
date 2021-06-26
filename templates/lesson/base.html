@@ -15,7 +15,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+<link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+
+        </head>
 <body>
 <main class="lesson-main">
     <div class="lesson-row">
@@ -156,10 +158,14 @@
             </div>
 
             <div class="header-main">
-                <iframe width="100%" height="500px" src="{{ current_lesson.url }}"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                <div class="plyr__video-embed" id="player">
+                <iframe
+                    src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                    allowfullscreen
+                    allowtransparency
+                    allow="autoplay"
+                ></iframe>
+                </div>
                 {% if current_lesson.next_lesson %}
                     <a href="{% url 'lesson-completion' course.slug current_lesson.slug %}" class="next">Keyingisi<i
                             class="fas fa-arrow-right ml-2"></i></a>
@@ -170,6 +176,10 @@
 </main>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+<script>
+  const player = new Plyr('#player');
+</script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
