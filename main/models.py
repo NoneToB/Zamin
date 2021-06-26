@@ -89,6 +89,7 @@ class Lesson(models.Model):
 
     def save(self, *args, **kwargs):
         unique_slugify(self, self.title)
+
         super(Lesson, self).save(*args, **kwargs)
 
 
