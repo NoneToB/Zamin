@@ -19,7 +19,7 @@ def is_completed(lesson, user_id):
 @register.filter
 def is_last(lesson, user_id):
     try:
-        LastLesson.objects.get(last_lesson=lesson, user_id=user_id)
-        return True
-    except ObjectDoesNotExist:
+        last = LastLesson.objects.get(course=lesson.course, user=user_id)
+        return lesson == last.next_lesson
+    except:
         return False
