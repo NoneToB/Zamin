@@ -1,6 +1,7 @@
 from datetime import timedelta
-
+from furl import furl
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 from account.models import Profile
 from taggit.managers import TaggableManager
@@ -73,6 +74,12 @@ class Lesson(models.Model):
     order_number = models.PositiveIntegerField(default=10)
 
     @property
+    def video_token(self):
+        parsed = furl(self.url)
+        token = parsed.args['v']
+        return token
+
+    @property
     def next_lesson(self):
         siblings = self.course.lessons.all()
         grater_siblings = siblings.filter(order_number__gt=self.order_number)
@@ -86,6 +93,15 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        try:
+            parsed = furl(self.url)
+            token = parsed.args['v']
+        except:
+            raise ValidationError({
+                'url': 'Youtube URL ini kiriting'
+            })
 
     def save(self, *args, **kwargs):
         unique_slugify(self, self.title)
