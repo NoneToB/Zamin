@@ -54,7 +54,11 @@ def lesson_view(request, course_slug, lesson_slug=None):
     context['last_lesson'] = last_lesson
 
     if not lesson_slug:
-        return redirect('lesson-view', course.slug, last_lesson.last_lesson.slug)
+        if hasattr(last_lesson, 'next_lesson'):
+            redirect_slug = last_lesson.last_lesson.slug
+        else:
+            redirect_slug = course.lessons.first().slug
+        return redirect('lesson-view', course.slug, redirect_slug)
 
     lesson = get_object_or_404(Lesson, slug=lesson_slug)
     if lesson.course.slug != course_slug:
