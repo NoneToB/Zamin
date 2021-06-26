@@ -65,7 +65,7 @@ class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons')
     title = models.CharField(max_length=255)
     url = models.URLField()
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     duration = models.DurationField(default=timedelta(minutes=20))
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -80,6 +80,7 @@ class Lesson(models.Model):
             return grater_siblings.first()
         else:
             return None
+
     class Meta:
         ordering = ['order_number', 'id']
 
@@ -101,3 +102,18 @@ class LessonCompletion(models.Model):
     user = models.ForeignKey(Profile, models.CASCADE, related_name='completed_lessons')
     lesson = models.ForeignKey(Lesson, models.CASCADE, related_name='completed_users')
     completed_date = models.DateTimeField(auto_now_add=True)
+
+
+class LastLesson(models.Model):
+    user = models.ForeignKey(Profile, models.CASCADE, related_name='last_lesson')
+    course = models.ForeignKey(Course, models.CASCADE)
+    last_lesson = models.ForeignKey(Lesson, models.CASCADE, blank=True, null=True)
+    completed_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = [['user', 'course']]
+
+    def save(self, *args, **kwargs):
+        if not self.last_lesson:
+            self.last_lesson = self.course.lessons.first()
+        super(LastLesson, self).save(*args, kwargs)

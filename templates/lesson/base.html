@@ -1,3 +1,4 @@
+{% load logic %}
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -28,21 +29,37 @@
                             class="fas fa-question-circle"></i>Savol berish
                     </button>
                 </div>
+
                 <div id="all-courses" class="tabcontent tab-active">
-                    <button class="accordion">{{ course.title}}</button>
+                    <button class="accordion">{{ course.title }}</button>
                     <div class="panel">
                         <ul class="lesson__dashboard-courses">
                             {% for lesson in course.lessons.all %}
                                 <a href={% url 'lesson-view' course.slug lesson.slug %}>
                                     {% if lesson == current_lesson %}
-
                                         <li class="active-lesson">
+                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
+                                            {% if lesson|is_completed:request.user.id %}
+                                                <div><b>{{ lesson.duration }}</b><input type="checkbox"  onclick="return false;" checked class="ml-2"></div>
+
                                             {% else %}
+                                                <div><b>{{ lesson.duration }}</b><input type="checkbox"  onclick="return false;" class="ml-2"></div>
+
+                                            {% endif %}
+                                        </li>
+                                    {% elif not lesson|is_completed:request.user.id and not lesson|is_last:requet.user.id %}
+                                        <li >
+                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
+                                            <div><b>{{ lesson.duration }}</b><i style="margin-left: 10px; margin-right: 0" class="fas fa-lock"></i></div>
+                                        </li>
+                                    {% else %}
                                         <li>
+                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
+                                            <div><b>{{ lesson.duration }}</b><input type="checkbox" onclick="return false;" checked class="ml-2"></div>
+                                        </li>
+
                                     {% endif %}
-                                    <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
-                                    <div><b>{{ lesson.duration }}</b><input type="checkbox" class="ml-2"></div>
-                                    </li>
+
                                 </a>
                             {% endfor %}
                             {#                                <li>#}
@@ -69,21 +86,21 @@
                         <h2><i class="fas fa-question"></i></h2>
                         <h3>Savolingizni qoldiring</h3>
                         <p>
-                        Zamin Education platformasida savol javob bo'limi telegram
-                        ilovasiga ko'chirildi! Endi siz o'z savolingizga tez javob
-                        olishingiz mumkin!
+                            Zamin Education platformasida savol javob bo'limi telegram
+                            ilovasiga ko'chirildi! Endi siz o'z savolingizga tez javob
+                            olishingiz mumkin!
                         </p>
                     </div>
-                    <hr />
-              <script
-                async
-                src="https://telegram.org/js/telegram-widget.js?15"
-                data-telegram-discussion="ZaminEducation_uz/4"
-                data-comments-limit="15"
-                data-colorful="1"
-                data-color="13B4C6"
-                data-dark-color="39C4E8"
-              ></script>
+                    <hr/>
+                    <script
+                            async
+                            src="https://telegram.org/js/telegram-widget.js?15"
+                            data-telegram-discussion="ZaminEducation_uz/4"
+                            data-comments-limit="15"
+                            data-colorful="1"
+                            data-color="13B4C6"
+                            data-dark-color="39C4E8"
+                    ></script>
                 </div>
             </div>
         </div>
@@ -98,19 +115,21 @@
                     <div>
                         <i class="fab fa-youtube"></i> {{ current_lesson.title }}
                     </div>
-                    <a href="">
-                        <i class="fas fa-check"></i> Darsni yakunlash
+                    <a href="{% url 'lesson-completion' course.slug current_lesson.slug %}">
+                        <i class="fas fa-check"></i>
+                        Darsni yakunlash
                     </a>
                 </div>
             </div>
 
             <div class="header-main">
-                <iframe width="100%" height="500px" src="{{ current_lesson.url}}"
+                <iframe width="100%" height="500px" src="{{ current_lesson.url }}"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 {% if current_lesson.next_lesson %}
-                    <a href="{% url 'lesson-view' course.slug current_lesson.next_lesson.slug %}" class="next">Keyingisi<i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="{% url 'lesson-completion' course.slug current_lesson.slug %}" class="next">Keyingisi<i
+                            class="fas fa-arrow-right ml-2"></i></a>
                 {% endif %}
             </div>
         </div>

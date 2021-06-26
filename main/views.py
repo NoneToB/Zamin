@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 
@@ -36,7 +38,6 @@ def course_detail(request, course_slug):
 @login_required
 def enroll_course(request, course_id):
     enrollment = Enrollment.objects.get_or_create(user=request.user, course_id=course_id)
-    enrollment.save()
     course_slug = Course.objects.get(id=course_id).slug
     return redirect('course-detail', course_slug)
 
@@ -44,15 +45,45 @@ def enroll_course(request, course_id):
 @login_required
 def lesson_view(request, course_slug, lesson_slug=None):
     context = {}
+
+    course = get_object_or_404(Course, slug=course_slug)
+    if not course.users.filter(pk=request.user.pk).exists():
+        redirect('course-detail', course.slug)
+
     if lesson_slug:
         lesson = get_object_or_404(Lesson, slug=lesson_slug)
         if lesson.course.slug != course_slug:
             return redirect('course-detail', lesson.course.slug)
         context['current_lesson'] = lesson
-    course = get_object_or_404(Course, slug=course_slug)
-
-    if not course.users.filter(pk=request.user.pk).exists():
-        redirect('course-detail', course.slug)
-
+        # is lesson accessible by user
+        last_lesson_obj, created = LastLesson.objects.get_or_create(course=course, user=request.user)
+        if lesson.order_number > last_lesson_obj.last_lesson.next_lesson.order_number:
+            return redirect('lesson-view', course.slug, last_lesson_obj.last_lesson.next_lesson.slug)
     context['course'] = course
+
     return render(request, 'lesson/base.html', context)
+
+
+@login_required
+def complete_lesson(request, course_slug, lesson_slug):
+    try:
+        course = Course.objects.get(slug=course_slug)
+    except ObjectDoesNotExist:
+        return Http404("Course Doesn't exist")
+
+    try:
+        lesson = course.lessons.get(slug=lesson_slug)
+    except ObjectDoesNotExist:
+        return redirect('lesson-view', course_slug)
+
+    LessonCompletion.objects.get_or_create(lesson=lesson, user=request.user)
+    last_lesson_obj, created = LastLesson.objects.get_or_create(course=course, user=request.user)
+    last_lesson_obj.last_lesson = lesson
+    last_lesson_obj.save()
+    return redirect('lesson-view', course.slug, lesson.next_lesson.slug)
+
+
+def handler404(request, *args, **kwargs):
+    response = render(request, 'index.html')
+    response.status_code = 404
+    return response

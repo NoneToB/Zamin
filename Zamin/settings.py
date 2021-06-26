@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-gmt-5jna&!&jlxcj8d%6qre^@3y&(lpr0o3#=*2kr%3t11qzq%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -139,3 +139,5 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'home'
+
+

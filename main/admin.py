@@ -39,3 +39,17 @@ class DifficultyAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     pass
 
+
+@admin.register(LessonCompletion)
+class CompletionAdmin(admin.ModelAdmin):
+    # list_display = ['title', 'slug', 'created', 'updated']
+    # prepopulated_fields = {'slug': ('title',)}
+    pass
+
+
+@admin.register(LastLesson)
+class LastLessonAdmin(admin.ModelAdmin):
+    # list_display = ['title', 'slug', 'created', 'updated']
+    # prepopulated_fields = {'slug': ('title',)}
+    pass
+
