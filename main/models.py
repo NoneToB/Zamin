@@ -110,10 +110,9 @@ class LastLesson(models.Model):
     last_lesson = models.ForeignKey(Lesson, models.CASCADE, blank=True, null=True)
     completed_date = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def next_lesson(self):
+        return self.last_lesson.next_lesson
+
     class Meta:
         unique_together = [['user', 'course']]
-
-    def save(self, *args, **kwargs):
-        if not self.last_lesson:
-            self.last_lesson = self.course.lessons.first()
-        super(LastLesson, self).save(*args, kwargs)

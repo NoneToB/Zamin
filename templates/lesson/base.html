@@ -34,31 +34,64 @@
                     <button class="accordion">{{ course.title }}</button>
                     <div class="panel">
                         <ul class="lesson__dashboard-courses">
+
                             {% for lesson in course.lessons.all %}
                                 <a href={% url 'lesson-view' course.slug lesson.slug %}>
-                                    {% if lesson == current_lesson %}
-                                        <li class="active-lesson">
-                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
-                                            {% if lesson|is_completed:request.user.id %}
-                                                <div><b>{{ lesson.duration }}</b><input type="checkbox"  onclick="return false;" checked class="ml-2"></div>
+                                    <li>
+                                        <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
 
-                                            {% else %}
-                                                <div><b>{{ lesson.duration }}</b><input type="checkbox"  onclick="return false;" class="ml-2"></div>
+                                        {% if lesson|is_completed:request.user.id %}
+                                            <div><b>{{ lesson.duration }}</b><input type="checkbox"
+                                                                                    onclick="return false;" checked
+                                                                                    class="ml-2"></div>
+                                        {% elif not lesson|is_completed:request.user.id and lesson == last_lesson.next_lesson or lesson == course.lessons.first%}
+                                            <div><b>{{ lesson.duration }}</b><input type="checkbox"
+                                                                                    onclick="return false;"
+                                                                                    class="ml-2"></div>
+                                        {% else %}
+                                            <div><b>{{ lesson.duration }}</b><i
+                                                    style="margin-left: 10px; margin-right: 0" class="fas fa-lock"></i>
+                                            </div>
+                                        {% endif %}
 
-                                            {% endif %}
-                                        </li>
-                                    {% elif not lesson|is_completed:request.user.id and not lesson|is_last:requet.user.id %}
-                                        <li >
-                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
-                                            <div><b>{{ lesson.duration }}</b><i style="margin-left: 10px; margin-right: 0" class="fas fa-lock"></i></div>
-                                        </li>
-                                    {% else %}
-                                        <li>
-                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>
-                                            <div><b>{{ lesson.duration }}</b><input type="checkbox" onclick="return false;" checked class="ml-2"></div>
-                                        </li>
-
-                                    {% endif %}
+                                        {#                                    {% if lesson == current_lesson %}#}
+                                        {#                                        <li class="active-lesson">#}
+                                        {#                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>#}
+                                        {#                                            {% if lesson|is_completed:request.user.id %}#}
+                                        {##}
+                                        {##}
+                                        {#                                            {% else %}#}
+                                        {#                                                <div><b>{{ lesson.duration }}</b><input type="checkbox"#}
+                                        {#                                                                                        onclick="return false;"#}
+                                        {#                                                                                        class="ml-2"></div>#}
+                                        {##}
+                                        {#                                            {% endif %}#}
+                                        {#                                        </li>#}
+                                        {##}
+                                        {#                                    {% elif not lesson|is_completed:request.user.id and not lesson|is_last:request.user.id %}#}
+                                        {#                                        <li>#}
+                                        {#                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>#}
+                                        {#                                            <div><b>{{ lesson.duration }}</b><i#}
+                                        {#                                                    style="margin-left: 10px; margin-right: 0" class="fas fa-lock"></i>#}
+                                        {#                                            </div>#}
+                                        {#                                        </li>#}
+                                        {#                                    {% else %}#}
+                                        {#                                        <li>#}
+                                        {#                                            <div><i class="fab fa-youtube"></i>{{ lesson.title }}</div>#}
+                                        {#                                            {% if lesson|is_last:request.user.id %}#}
+                                        {#                                                <div><b>{{ lesson.duration }}</b><input type="checkbox"#}
+                                        {#                                                                                        onclick="return false;"#}
+                                        {#                                                                                        class="ml-2"></div>#}
+                                        {#                                            {% else %}#}
+                                        {#                                                <div><b>{{ lesson.duration }}</b><input type="checkbox"#}
+                                        {#                                                                                        onclick="return false;" checked#}
+                                        {#                                                                                        class="ml-2"></div>#}
+                                        {##}
+                                        {#                                            {% endif %}#}
+                                        {#                                        </li>#}
+                                        {##}
+                                        {#                                    {% endif %}#}
+                                    </li>
 
                                 </a>
                             {% endfor %}

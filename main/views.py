@@ -50,15 +50,25 @@ def lesson_view(request, course_slug, lesson_slug=None):
     if not course.users.filter(pk=request.user.pk).exists():
         redirect('course-detail', course.slug)
 
-    if lesson_slug:
-        lesson = get_object_or_404(Lesson, slug=lesson_slug)
-        if lesson.course.slug != course_slug:
-            return redirect('course-detail', lesson.course.slug)
-        context['current_lesson'] = lesson
-        # is lesson accessible by user
-        last_lesson_obj, created = LastLesson.objects.get_or_create(course=course, user=request.user)
-        if lesson.order_number > last_lesson_obj.last_lesson.next_lesson.order_number:
+    last_lesson, last_lesson_created = LastLesson.objects.get_or_create(course=course, user=request.user)
+    context['last_lesson'] = last_lesson
+
+    if not lesson_slug:
+        return redirect('lesson-view', course.slug, last_lesson.last_lesson.slug)
+
+    lesson = get_object_or_404(Lesson, slug=lesson_slug)
+    if lesson.course.slug != course_slug:
+        return redirect('course-detail', lesson.course.slug)
+    context['current_lesson'] = lesson
+
+    # is lesson accessible by user
+    if hasattr(last_lesson, 'next_lesson') and last_lesson.next_lesson:
+        last_lesson_obj = LastLesson.objects.get(course=course, user=request.user)
+        if lesson.order_number > last_lesson_obj.next_lesson.order_number:
             return redirect('lesson-view', course.slug, last_lesson_obj.last_lesson.next_lesson.slug)
+    elif lesson != course.lessons.first():
+        return redirect('lesson-view', course.slug, course.lessons.first().slug)
+
     context['course'] = course
 
     return render(request, 'lesson/base.html', context)
@@ -80,7 +90,12 @@ def complete_lesson(request, course_slug, lesson_slug):
     last_lesson_obj, created = LastLesson.objects.get_or_create(course=course, user=request.user)
     last_lesson_obj.last_lesson = lesson
     last_lesson_obj.save()
-    return redirect('lesson-view', course.slug, lesson.next_lesson.slug)
+    print(lesson.next_lesson)
+    if lesson.next_lesson:
+        redirect_slug = lesson.next_lesson.slug
+    else:
+        redirect_slug = lesson.slug
+    return redirect('lesson-view', course.slug, redirect_slug)
 
 
 def handler404(request, *args, **kwargs):
