@@ -143,20 +143,15 @@
             <div class="lesson-header">
                 <div class="menu-content">
                     <i class="fas fa-bars"></i>
-                    <a href="{% url 'home' %}">
-                        <i class="fas fa-home"></i>
-                        Bosh sahifaga qaytish
-                    </a>
                     <div>
-                        <i class="fab fa-youtube"></i> {{ current_lesson.title }}
+                        
                     </div>
-                    <a href="{% url 'lesson-completion' course.slug current_lesson.slug %}">
+                    <a href="{% url 'lesson-completion' course.slug current_lesson.slug %}" class="btn btn-dark">
                         <i class="fas fa-check"></i>
                         Darsni yakunlash
                     </a>
                 </div>
             </div>
-                    {{ current_lesson.video_token }}
 
             <div class="header-main">
                 <div class="plyr__video-embed" id="player">
@@ -168,6 +163,10 @@
                     allow="autoplay"
                 ></iframe>
                 </div>
+                <h4 class="lesson__title"><i class="fas fa-video"></i>  {{ current_lesson.title }}</h4>
+                <p style="margin: 0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla aliquam, inventore ullam ad quam nemo nostrum fuga soluta tenetur, rem architecto qui. Doloremque, doloribus incidunt. Necessitatibus tempore eos et quas? 
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro fugiat vel repellat laboriosam eos voluptatem, nemo, cumque numquam, accusamus voluptate maiores libero ex blanditiis consequuntur? Cumque iste repellat eligendi. Laboriosam.
+                </p>
                 {% if current_lesson.next_lesson %}
                     <a href="{% url 'lesson-completion' course.slug current_lesson.slug %}" class="next">Keyingisi<i
                             class="fas fa-arrow-right ml-2"></i></a>

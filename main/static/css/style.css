@@ -1151,6 +1151,11 @@ label {
   padding: 5px;
 }
 
+.lesson__title {
+  padding: 12px 0px;
+  color: #1a8588;
+}
+
 .header__top {
   height: 48px;
   padding: 10px 0px;
