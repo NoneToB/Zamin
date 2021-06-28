@@ -83,7 +83,7 @@ class Lesson(models.Model):
     def next_lesson(self):
         siblings = self.course.lessons.all()
         grater_siblings = siblings.filter(order_number__gt=self.order_number)
-        if grater_siblings.exists():
+        if grater_siblings.exists():    
             return grater_siblings.first()
         else:
             return None
